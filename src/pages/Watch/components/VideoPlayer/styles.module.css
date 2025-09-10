@@ -1,0 +1,530 @@
+/* Video Player Container - NETFLIX STYLE */
+.videoContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: none;
+  transition: cursor 0.3s ease;
+}
+
+.videoContainer:hover {
+  cursor: default;
+}
+
+/* Fullscreen Mode */
+.videoContainer.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+}
+
+/* React Player Positioning - ULTIMATE FIX */
+.reactPlayer {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+}
+
+/* Force iframe visibility for YouTube videos */
+.reactPlayer iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 1 !important;
+}
+
+/* Video Element - FORCE VISIBILITY */
+.reactPlayer video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  background: #000 !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 1 !important;
+}
+
+/* Netflix-style Video Controls Overlay */
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.7) 0%,
+    rgba(0, 0, 0, 0.3) 20%,
+    transparent 40%,
+    transparent 60%,
+    rgba(0, 0, 0, 0.3) 80%,
+    rgba(0, 0, 0, 0.5) 100%
+  );
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Netflix-style Center Controls */
+.centerControls {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  z-index: 15;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Skip Buttons (10 sec back/forward) - NETFLIX EXACT STYLING */
+.skipButton {
+  background: rgba(42, 42, 42, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.4rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.skipButton:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.1);
+}
+
+.skipButton:active {
+  transform: scale(0.95);
+}
+
+/* Main Play/Pause Button - NETFLIX EXACT */
+.playButton {
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  border-radius: 50%;
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #000;
+  font-size: 2.2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+.playButton:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Netflix-style Bottom Controls Bar */
+.bottomControls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    transparent 100%
+  );
+  padding: 2rem 3rem 1.5rem;
+  z-index: 15;
+  pointer-events: auto;
+  opacity: 1;
+}
+
+/* Progress Bar - NETFLIX EXACT STYLING */
+.progressContainer {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background: #e50914;
+  border-radius: 2px;
+  transition: width 0.1s ease;
+  position: relative;
+}
+
+.progressBar::after {
+  content: '';
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  background: #e50914;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.progressContainer:hover .progressBar::after {
+  opacity: 1;
+}
+
+/* Control Buttons Row */
+.controlsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.leftControls,
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Family Safe Button - NETFLIX STYLE */
+.familySafeButton {
+  background: rgba(42, 42, 42, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.familySafeButton.active {
+  background: #00b894;
+  border-color: #00b894;
+  color: #fff;
+}
+
+.familySafeButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* Volume Control - NETFLIX STYLE */
+.volumeControl {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.volumeSlider {
+  width: 100px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+}
+
+.volumeSlider::-webkit-slider-thumb {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #e50914;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volumeSlider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #e50914;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+/* Time Display - NETFLIX STYLE */
+.timeDisplay {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Control Icon Buttons */
+.controlButton {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.controlButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Fullscreen Button */
+.fullscreenButton {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0.6rem;
+  transition: all 0.3s ease;
+  border-radius: 6px;
+}
+
+.fullscreenButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Skip Forward/Backward Indicators */
+.skipIndicator {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+}
+
+.skipIndicator.left {
+  left: 30px;
+}
+
+.skipIndicator.right {
+  right: 30px;
+}
+
+.skipIndicator.show {
+  opacity: 1;
+  animation: skipPulse 0.6s ease;
+}
+
+@keyframes skipPulse {
+  0%, 100% { 
+    transform: translateY(-50%) scale(1); 
+    opacity: 1;
+  }
+  50% { 
+    transform: translateY(-50%) scale(1.1); 
+    opacity: 0.8;
+  }
+}
+
+/* No Video Available Container */
+.noVideo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #141414 0%, #000000 100%);
+  color: #fff;
+  position: relative;
+}
+
+/* Poster Container */
+.posterContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  max-width: 500px;
+  min-width: 300px;
+}
+
+/* Poster Image */
+.poster {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  filter: brightness(0.7) contrast(1.1) drop-shadow(0 10px 30px rgba(0, 0, 0, 0.8));
+  transition: all 0.3s ease;
+  object-fit: cover;
+}
+
+.poster:hover {
+  filter: brightness(0.85) contrast(1.1) drop-shadow(0 15px 40px rgba(229, 9, 20, 0.3));
+  transform: scale(1.02);
+}
+
+/* No Video Message */
+.noVideoMessage {
+  position: absolute;
+  top: 50%;
+  left: 105%;
+  transform: translateY(-50%);
+  color: #fff;
+  text-align: left;
+  padding: 2rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 12px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  min-width: 300px;
+}
+
+.noVideoMessage h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.noVideoMessage p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive Design - Netflix Optimized */
+@media (max-width: 1024px) {
+  .centerControls {
+    gap: 2rem;
+  }
+  
+  .skipButton {
+    width: 56px;
+    height: 56px;
+    font-size: 1.2rem;
+  }
+  
+  .playButton {
+    width: 76px;
+    height: 76px;
+    font-size: 2rem;
+  }
+  
+  .bottomControls {
+    padding: 1.5rem 2rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .centerControls {
+    gap: 1.5rem;
+  }
+  
+  .skipButton {
+    width: 50px;
+    height: 50px;
+    font-size: 1rem;
+  }
+  
+  .playButton {
+    width: 68px;
+    height: 68px;
+    font-size: 1.8rem;
+  }
+  
+  .bottomControls {
+    padding: 1.2rem 1.5rem 0.8rem;
+  }
+  
+  .controlsRow {
+    gap: 1rem;
+  }
+  
+  .leftControls,
+  .rightControls {
+    gap: 1rem;
+  }
+  
+  .timeDisplay {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .centerControls {
+    gap: 1rem;
+  }
+  
+  .skipButton {
+    width: 44px;
+    height: 44px;
+    font-size: 0.9rem;
+  }
+  
+  .playButton {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
+  
+  .familySafeButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .timeDisplay {
+    font-size: 0.8rem;
+  }
+  
+  .bottomControls {
+    padding: 1rem 1rem 0.6rem;
+  }
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

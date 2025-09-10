@@ -1,0 +1,208 @@
+.footer {
+  background-color: #000000;
+  color: #737373;
+  padding: 50px 0 20px;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.2;
+}
+
+.containerFooter {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/*Media Icons */
+.socialIcons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.socialIcon {
+  font-size: 24px;
+  color: #737373;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.socialIcon:hover {
+  color: #ffffff;
+}
+
+/* Links Grid */
+.footerLinks {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px 0;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 40px 0;
+  font-size: 13px;
+}
+
+.footerLinks li {
+  margin-bottom: 16px;
+}
+
+.footerLink {
+  color: #737373;
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 1.2;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+/* Developer Credits */
+.developerCredits {
+  border-top: 1px solid #222222;
+  padding-top: 30px;
+  margin-bottom: 30px;
+}
+
+.builtByLabel {
+  color: #737373;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin: 0 0 20px 0;
+}
+
+.developers {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.developer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.developerName {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.developerSocials {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.developerLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #737373;
+  text-decoration: none;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  padding: 4px 0;
+}
+
+.developerLink:hover {
+  color: #ffffff;
+}
+
+.developerLink svg {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* hover colors for platforms */
+.developerLink:hover svg[data-testid="linkedin"] {
+  color: #0077b5;
+}
+
+.developerLink:hover svg[data-testid="github"] {
+  color: #ffffff;
+}
+
+/* Bottom */
+.footerBottom {
+  border-top: 1px solid #222222;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.serviceCode {
+  color: #737373;
+  font-size: 13px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.copyright {
+  color: #737373;
+  font-size: 11px;
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footerLinks {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 0;
+  }
+  
+  .developers {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .containerFooter {
+    padding: 0 6%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 30px 0 15px;
+  }
+  
+  .footerLinks {
+    grid-template-columns: 1fr;
+    gap: 8px 0;
+  }
+  
+  .footerLinks li {
+    margin-bottom: 12px;
+  }
+  
+  .socialIcons {
+    gap: 16px;
+    margin-bottom: 25px;
+  }
+  
+  .socialIcon {
+    font-size: 20px;
+  }
+  
+  .developers {
+    gap: 20px;
+  }
+  
+  .developerSocials {
+    gap: 12px;
+  }
+}
+
+/* Dark theme */
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background-color: #000000;
+  }
+}

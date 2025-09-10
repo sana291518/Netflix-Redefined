@@ -1,0 +1,362 @@
+/* Scene Skipper Container */
+.sceneSkipperContainer {
+  position: absolute;
+  bottom: 5rem;
+  right: 2rem;
+  background: rgba(20, 20, 20, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+  color: white;
+  max-width: 380px;
+  width: 100%;
+  padding: 0;
+  z-index: 1000;
+  animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Skip Notification */
+.skipNotification {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Skip Header */
+.skipHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.sceneType {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #e50914;
+}
+
+.sceneType svg {
+  font-size: 1.1rem;
+  color: #e50914;
+}
+
+.severityIndicator {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Skip Content */
+.skipContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sceneDescription {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Skip Actions */
+.skipActions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.skipButton {
+  flex: 1;
+  background: linear-gradient(135deg, #e50914 0%, #b20710 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(229, 9, 20, 0.3);
+}
+
+.skipButton:hover {
+  background: linear-gradient(135deg, #f40612 0%, #e50914 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(229, 9, 20, 0.5);
+}
+
+.skipButton:active {
+  transform: translateY(0);
+}
+
+.watchButton {
+  flex: 1;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.watchButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Progress Bar */
+.progressBar {
+  height: 4px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, #e50914 0%, #f40612 100%);
+  border-radius: 2px;
+  transition: width 1s linear;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.5);
+}
+
+/* Filter Settings */
+.filterSettings {
+  background: rgba(20, 20, 20, 0.98);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(20px);
+}
+
+.filterSettings h4 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filterOption {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.filterOption:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.filterOption input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #e50914;
+}
+
+.filterIcon {
+  font-size: 1.3rem;
+  color: #e50914;
+  flex-shrink: 0;
+}
+
+.filterOption span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: white;
+  line-height: 1.3;
+}
+
+.closeSettings {
+  width: 100%;
+  background: #e50914;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.8rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.closeSettings:hover {
+  background: #f40612;
+  transform: translateY(-1px);
+}
+
+/* Family Mode Indicator */
+.familyModeIndicator {
+  position: absolute;
+  bottom: 3rem;
+  right: 2rem;
+  z-index: 999;
+}
+
+.settingsButton {
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 25px;
+  padding: 0.6rem 1.2rem;
+  color: white;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.settingsButton:hover {
+  background: rgba(20, 20, 20, 1);
+  border-color: #e50914;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.settingsButton svg {
+  font-size: 1rem;
+}
+
+/* Active Filter Badges */
+.activeFilters {
+  display: flex;
+  gap: 0.3rem;
+  margin-left: 0.5rem;
+}
+
+.filterBadge {
+  background: #e50914;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.4rem;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sceneSkipperContainer {
+    bottom: 2rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+    width: auto;
+  }
+  
+  .familyModeIndicator {
+    bottom: 1rem;
+    right: 1rem;
+  }
+  
+  .skipNotification {
+    padding: 1rem;
+  }
+  
+  .skipActions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .skipButton,
+  .watchButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .sceneSkipperContainer {
+    bottom: 1rem;
+    right: 0.5rem;
+    left: 0.5rem;
+  }
+  
+  .settingsButton {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .filterSettings {
+    padding: 1rem;
+  }
+  
+  .filterOption {
+    padding: 0.6rem;
+  }
+}
+
+/* Glass morphism effects */
+.sceneSkipperContainer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+/* Smooth transitions for all elements */
+* {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

@@ -1,0 +1,1 @@
+export { HeartPulse } from './HeartPulse';

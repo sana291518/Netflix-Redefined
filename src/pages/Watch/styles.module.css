@@ -1,0 +1,271 @@
+/* Main Watch Container */
+.watchContainer {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: white;
+}
+
+/* Fullscreen Mode */
+.watchContainer.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  padding: 0;
+}
+
+/* Back to Browse Button - Netflix Style */
+.backButton {
+  position: fixed;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(42, 42, 42, 0.8);
+  border: none;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.backButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+}
+
+.backButton:active {
+  transform: scale(0.95);
+}
+
+/* Movie Information Overlay - Top Right Netflix Style */
+.movieInfo {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  max-width: 400px;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 8px;
+  padding: 1.5rem;
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  opacity: 0;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.movieInfo h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.movieMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.movieMeta span {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+/* Family Safe Badge - Netflix Style */
+.familySafeBadge {
+  background: #00b894;
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Loading States */
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #333;
+  border-top: 6px solid #e50914;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.loadingContainer p {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+}
+
+/* Error Container */
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #000;
+  color: white;
+  text-align: center;
+}
+
+.errorContainer p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.errorContainer button {
+  background: #e50914;
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.errorContainer button:hover {
+  background: #f40612;
+}
+
+/* Responsive Design - Netflix Style */
+@media (max-width: 1024px) {
+  .movieInfo {
+    top: 1.5rem;
+    right: 1.5rem;
+    max-width: 350px;
+    padding: 1.2rem;
+  }
+  
+  .movieInfo h1 {
+    font-size: 1.8rem;
+  }
+  
+  .backButton {
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .backButton {
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  
+  .movieInfo {
+    top: 1rem;
+    right: 1rem;
+    max-width: 300px;
+    padding: 1rem;
+  }
+  
+  .movieInfo h1 {
+    font-size: 1.5rem;
+  }
+  
+  .movieMeta {
+    font-size: 0.8rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .backButton {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.75rem;
+  }
+  
+  .movieInfo {
+    max-width: calc(100% - 2rem);
+    padding: 0.8rem;
+  }
+  
+  .movieInfo h1 {
+    font-size: 1.3rem;
+  }
+  
+  .familySafeBadge {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.7rem;
+  }
+}
+
+/* Hide elements when controls are hidden */
+.watchContainer:not(:hover) .backButton,
+.watchContainer:not(:hover) .movieInfo {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Show elements when controls are shown */
+.watchContainer:hover .backButton,
+.watchContainer:hover .movieInfo {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.3s ease;
+}
+
+/* Focus States for Accessibility */
+.backButton:focus {
+  outline: 2px solid #e50914;
+  outline-offset: 4px;
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}

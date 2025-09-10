@@ -1,0 +1,170 @@
+.movieRow {
+  position: relative;
+  margin-bottom: 1.875rem;
+}
+
+.movieRow h2 {
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+  margin-left: 2.1875rem;
+}
+
+.movieRowHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movieRowTitle {
+  display: flex;
+  align-items: center;
+  max-width: fit-content;
+}
+
+.movieRowMore {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.movieRowMore span {
+  opacity: 0;
+  white-space: nowrap;
+  margin-left: 0.625rem;
+  transition: all 0.2s ease;
+  margin-top: 0.1875rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.movieRowMore svg {
+  cursor: pointer;
+  margin-top: 0.125rem;
+  transition: all 0.2s ease;
+  font-size: 1.5625rem;
+  position: absolute;
+  opacity: 0;
+}
+
+/* Hover on movieRowTitle triggers svg transform and span opacity */
+.movieRowTitle:hover .movieRowMore svg {
+  transform: translateX(3.4375rem);
+}
+
+.movieRowTitle:hover .movieRowMore svg ~ span {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Hover on movieRow triggers svg opacity */
+.movieRow:hover .movieRowHeader .movieRowMore svg {
+  opacity: 1;
+}
+
+.movieRowListArea {
+  overflow-x: hidden;
+  padding: 0.5625rem 0 0.3125rem 1.875rem;
+  padding-left: 1.875rem;
+}
+
+.movieRowList {
+  transition: all ease 0.5s;
+}
+
+.movieRowItem {
+  width: 12.5rem;
+  position: relative;
+  display: inline-block;
+  height: 18.75rem;
+  cursor: pointer;
+}
+
+/* Images inside movieRowItem */
+.movieRowItem img {
+  width: 100%;
+  height: 18.75rem;
+  border-radius: 8px;
+  transform: scale(0.95);
+  transition: all ease 0.2s;
+}
+
+.movieRowItem img:hover {
+  transform: scale(1.05);
+}
+
+.movieRowItemError {
+  position: absolute;
+  transition: all ease 0.2s;
+  transform: translateX(-50%) scale(0.95);
+  left: 50%;
+  top: 40%;
+}
+
+/* Content inside movieRowItemError */
+.movieRowItemError > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.movieRowItemError > div p {
+  max-width: 74%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin-bottom: 0.3125rem;
+  font-size: 1.0625rem;
+  overflow: hidden;
+}
+
+.movieRowItemError > div svg {
+  font-size: 3.125rem;
+}
+
+/* Hover effect */
+.movieRowItemError:hover {
+  transform: translateX(-50%) scale(1);
+}
+
+.movieRowLeft,
+.movieRowRight {
+  z-index: 99;
+  display: flex;
+  height: 17.8125rem;
+  position: absolute;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  transition: all ease 0.5s;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+  width: 2.5rem;
+  opacity: 0;
+  top: 45px;
+}
+
+.movieRowLeft {
+  left: 0;
+}
+
+.movieRowRight {
+  right: 0;
+}
+
+/* Show buttons on hover of movieRow */
+.movieRow:hover .movieRowLeft,
+.movieRow:hover .movieRowRight {
+  opacity: 1;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 760px) {
+  .movieRowLeft,
+  .movieRowRight {
+    opacity: 1;
+  }
+}
