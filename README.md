@@ -1,5 +1,5 @@
 
-# Netflix Clone – Full Stack React & Trellis
+# Netflix Redefine
 
 ## Overview
 
