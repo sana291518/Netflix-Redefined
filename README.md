@@ -88,6 +88,3 @@ VITE_TMDB_API_LANGUAGE=en-US
 ## License
 
 MIT License
-
-
-Want me to also draft a **shorter recruiter-friendly README** (just overview, features, setup) as an alternative?
